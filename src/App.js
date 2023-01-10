@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "./App.css";
+import "./common.css";
 import products from "./data";
+import Shoes from "./Shoes";
 
 function App() {
-
-  const [shoes] = useState()
+  const [shoes] = useState(products);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -20,17 +21,7 @@ function App() {
       </Navbar>
       <div className="mainBg"></div>
       <div className="container">
-        <div className="row">
-          {
-            products.map(it => {
-              return (
-                <div>
-                  {it.title}
-                </div>
-              )
-            })
-          }
-        </div>
+        <Shoes products={products} />
       </div>
     </div>
   );
