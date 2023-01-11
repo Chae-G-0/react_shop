@@ -5,10 +5,27 @@
 .mainBg {
   width: 100%;
   height: 450px;
-  background: url(/public/assets/shoes1.jpg) no-repeat;
+  background: url(/public/assets/bg.png) no-repeat;
   background-position: center;
 }
 
 img {
   width: 100%;
+}
+
+.container h4 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.container p {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.container span {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
 }
