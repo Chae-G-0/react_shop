@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Detail = (props) => {
+  const [inputValue, setInputValue] = useState("");
+  useEffect(() => {
+    if (isNaN(inputValue) == true) {
+      alert("숫자를 입력하세요.");
+    }
+  }, [inputValue]);
+  const [count, setCount] = useState(0);
   const { id } = useParams();
-  const find = props.shoes.find((it) => id == it.id);
+  const find = props.products.find((it) => id == it.id);
   return (
     <div className="container">
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        {count}1씩 증가하는 버튼
+      </button>
+      <input
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+      />
       <div className="row">
         <div className="col-md-6">
           <img

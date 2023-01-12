@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import "./common.css";
 import products from "./data";
@@ -8,7 +9,7 @@ import Detail from "./Detail";
 import Shoes from "./Shoes";
 
 function App() {
-  const [shoes] = useState(products);
+  const [shoes, setShoes] = useState(products);
   const navigate = useNavigate();
   return (
     <div className="App">
@@ -35,7 +36,7 @@ function App() {
       </Navbar>
       <Routes>
         <Route path="/" element={<Shoes products={products} />} />
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/detail/:id" element={<Detail products={products} />} />
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<div>생일 쿠폰 발급</div>} />
           <Route path="two" element={<div>첫 주문시 상품 100원</div>} />

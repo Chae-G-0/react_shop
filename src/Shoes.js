@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Shoes = ({ products }) => {
   return (
@@ -20,6 +21,17 @@ const Shoes = ({ products }) => {
             );
           })}
         </div>
+        <button
+          onClick={() => {
+            axios
+              .get("https://codingapple1.github.io/shop/data2.json")
+              .then((data) => {
+                const copy = [...products, ...data.data];
+              });
+          }}
+        >
+          버튼
+        </button>
       </div>
     </>
   );
