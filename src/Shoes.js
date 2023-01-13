@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import products from "./data";
 
-const Shoes = ({ products }) => {
+const Shoes = () => {
+  const [shoes, setShoes] = useState(products);
+  const [click, setClick] = useState(0);
+
   return (
     <>
       <div className="mainBg"></div>
       <div className="container">
         <div className="row">
-          {products.map((it) => {
+          {shoes.map((it) => {
             return (
               <div className="col-md-4" key={it.id}>
                 <img
@@ -26,7 +30,12 @@ const Shoes = ({ products }) => {
             axios
               .get("https://codingapple1.github.io/shop/data2.json")
               .then((data) => {
-                const copy = [...products, ...data.data];
+                const copy = [...shoes, ...data.data];
+                setShoes(copy);
+                console.log(copy);
+              })
+              .catch(() => {
+
               });
           }}
         >
