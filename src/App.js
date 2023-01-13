@@ -7,6 +7,7 @@ import "./common.css";
 import products from "./data";
 import Detail from "./Detail";
 import Shoes from "./Shoes";
+import Cart from "./Cart";
 
 function App() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ function App() {
           <Route path="two" element={<div>첫 주문시 상품 100원</div>} />
         </Route>
         <Route path="*" element={<div>없는 페이지 입니다.</div>} />
+        <Route path="/cart" element={<Cart/>} />
       </Routes>
     </div>
   );

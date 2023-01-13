@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import products from "./data";
