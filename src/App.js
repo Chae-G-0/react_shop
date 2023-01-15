@@ -31,18 +31,25 @@ function App() {
             >
               DETAIL
             </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
       <Routes>
         <Route path="/" element={<Shoes />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<div>생일 쿠폰 발급</div>} />
           <Route path="two" element={<div>첫 주문시 상품 100원</div>} />
         </Route>
         <Route path="*" element={<div>없는 페이지 입니다.</div>} />
-        <Route path="/cart" element={<Cart/>} />
       </Routes>
     </div>
   );
