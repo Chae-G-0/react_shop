@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,15 @@ import Shoes from "./Shoes";
 import Cart from "./Cart";
 
 function App() {
+
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, []);
+
+  const obj = { name: 'chae' }
+  localStorage.setItem("data", JSON.stringify(obj));
+  let print = localStorage.getItem("data");
+
   const navigate = useNavigate();
   return (
     <div className="App">
@@ -26,23 +35,16 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/detail");
-              }}
-            >
-              DETAIL
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
                 navigate("/cart");
               }}
             >
-              Cart
+              CART
             </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
       <Routes>
-        <Route path="/" element={<Shoes />} />
+        <Route path="/" element={<Shoes navigate={ navigate} />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/event" element={<Event />}>

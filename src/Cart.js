@@ -2,12 +2,14 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCount } from "./store";
+import user from "./store/userSlice";
 
 const Cart = () => {
   const list = useSelector((state) => state);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div>
+      <h4>{list.user.name}의 장바구니</h4>
       <Table>
         <thead>
           <tr>
@@ -25,9 +27,13 @@ const Cart = () => {
                 <td>{it.name}</td>
                 <td>{it.count}</td>
                 <td>
-                  <button onClick={() => {
-                    dispatch(changeCount(list.list[i].id))
-                  }}>+</button>
+                  <button
+                    onClick={() => {
+                      dispatch(changeCount(list.list[i].id));
+                    }}
+                  >
+                    +
+                  </button>
                 </td>
               </tr>
             );

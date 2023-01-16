@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import products from "./data";
 
-const Shoes = () => {
+const Shoes = ({navigate}) => {
   const [shoes, setShoes] = useState(products);
   const [click, setClick] = useState(0);
 
@@ -13,7 +13,7 @@ const Shoes = () => {
         <div className="row">
           {shoes.map((it) => {
             return (
-              <div className="col-md-4" key={it.id}>
+              <div className="col-md-4" key={it.id} onClick={()=>{navigate(`/detail/${it.id}`)} }>
                 <img
                   src={process.env.PUBLIC_URL + `/assets/shoes${it.id}.jpg`}
                   alt=""
@@ -34,9 +34,7 @@ const Shoes = () => {
                 setShoes(copy);
                 console.log(copy);
               })
-              .catch(() => {
-
-              });
+              .catch(() => {});
           }}
         >
           버튼
