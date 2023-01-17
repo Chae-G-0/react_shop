@@ -11,6 +11,15 @@ const Detail = () => {
   const [tab, setTab] = useState(0);
 
   useEffect(() => {
+    let localData = localStorage.getItem("watched");
+    localData = JSON.parse(localData);
+    localData.push(find.id);
+    localData = new Set(localData);
+    localData = Array.from(localData);
+    localStorage.setItem("watched", JSON.stringify(localData));
+  }, []);
+
+  useEffect(() => {
     if (isNaN(inputValue) == true) {
       alert("숫자를 입력하세요.");
     }
@@ -32,7 +41,7 @@ const Detail = () => {
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
+            src={process.env.PUBLIC_URL + `/assets/shoes${find.id}.jpg`}
             width="100%"
           />
         </div>
@@ -82,12 +91,12 @@ const Detail = () => {
 };
 
 const TabContent = ({ tab }) => {
-  useEffect(() => {
-    
-  }, [tab])
+  useEffect(() => {}, [tab]);
   return (
-    <div className="start end">{[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]}</div>
+    <div className="start end">
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]}
+    </div>
   );
-}
+};
 
 export default Detail;
